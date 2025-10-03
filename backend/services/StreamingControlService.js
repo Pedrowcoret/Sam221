@@ -472,18 +472,19 @@ class StreamingControlService {
         try {
             const { streaming, server } = await this.getStreamingData(login);
 
-            // Decodificar senha do servidor
-            const serverPassword = this.decodePassword(server.senha);
-            const serverIp = server.ip;
+            // Usar domínio correto do Wowza e credenciais
+            const wowzaHost = 'stmv1.udicast.com';
+            const wowzaUser = 'admin';
+            const wowzaPassword = 'FK38Ca2SuE6jvJXed97VMn';
 
             // URL do endpoint Wowza schedules
-            const url = `http://${serverIp}:555/schedules?appName=${login}&action=reloadSchedule`;
+            const url = `http://${wowzaHost}:555/schedules?appName=${login}&action=reloadSchedule`;
 
             console.log(`🔄 Recarregando playlists para: ${login}`);
             console.log(`📍 URL: ${url}`);
 
-            // Criar cliente Digest Fetch
-            const client = new DigestFetch('admin', serverPassword, {
+            // Criar cliente Digest Fetch com credenciais corretas
+            const client = new DigestFetch(wowzaUser, wowzaPassword, {
                 algorithm: 'MD5'
             });
 
