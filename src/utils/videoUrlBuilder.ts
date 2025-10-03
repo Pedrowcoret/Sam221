@@ -144,18 +144,18 @@ export class VideoUrlBuilder {
     const finalFileName = this.ensureMp4Extension(parts.fileName);
 
     return {
-      // HLS seguindo padrão de referência
-      hls: `https://${domain}/${parts.userLogin}/${parts.userLogin}/mp4:${parts.folderName}/${finalFileName}/playlist.m3u8`,
-      
-      // HLS seguro
-      hls_secure: `https://${domain}/${parts.userLogin}/${parts.userLogin}/mp4:${parts.folderName}/${finalFileName}/playlist.m3u8`,
-      
-      // DASH
-      dash: `https://${domain}/${parts.userLogin}/${parts.userLogin}/mp4:${parts.folderName}/${finalFileName}/manifest.mpd`,
-      
+      // HLS seguindo padrão de referência (sem porta)
+      hls: `https://${domain}/${parts.userLogin}/${parts.userLogin}/playlist.m3u8`,
+
+      // HLS seguro (sem porta)
+      hls_secure: `https://${domain}/${parts.userLogin}/${parts.userLogin}/playlist.m3u8`,
+
+      // DASH (sem porta)
+      dash: `https://${domain}/${parts.userLogin}/${parts.userLogin}/manifest.mpd`,
+
       // RTSP
       rtsp: `rtsp://${domain}:554/${parts.userLogin}/${parts.userLogin}/mp4:${parts.folderName}/${finalFileName}`,
-      
+
       // URL direta do player (porta 1443)
       direct: `https://${domain}:${this.PORT}/play.php?login=${parts.userLogin}&video=${parts.folderName}/${finalFileName}`
     };

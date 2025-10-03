@@ -178,7 +178,7 @@ app.use('/content', async (req, res, next) => {
     let wowzaUrl;
     if (isStreamFile) {
       const mp4Path = `${userLogin}/${folderName}/${finalFileName}`;
-      wowzaUrl = `https://${wowzaHost}:1935/vod/_definst_/mp4:${mp4Path}/playlist.m3u8`;
+      wowzaUrl = `https://${wowzaHost}/vod/_definst_/mp4:${mp4Path}/playlist.m3u8`;
     } else {
       const mp4Path = `${userLogin}/${folderName}/${finalFileName}`;
       wowzaUrl = `https://${wowzaHost}:6980/content/${mp4Path}`;
@@ -202,7 +202,7 @@ app.use('/content', async (req, res, next) => {
       if (!wowzaResponse.ok) {
         if (finalFileName !== fileName) {
           const originalUrl = isStreamFile ?
-            `https://${wowzaHost}:1935/vod/_definst_/mp4:${userLogin}/${folderName}/${fileName}/playlist.m3u8` :
+            `https://${wowzaHost}/vod/_definst_/mp4:${userLogin}/${folderName}/${fileName}/playlist.m3u8` :
             `https://${wowzaHost}:6980/content/${userLogin}/${folderName}/${fileName}`;
           const originalResponse = await fetch(originalUrl, { method: req.method, headers: requestHeaders, timeout: 30000 });
           if (originalResponse.ok) {
@@ -321,7 +321,7 @@ app.get('/api/wowza/video-url/:userLogin/:folderName/:fileName', async (req, res
     const finalFileName = fileName.endsWith('.mp4') ? fileName : fileName.replace(/\.[^/.]+$/, '.mp4');
     const urls = {
       direct: `https://${wowzaHost}:6980/content/${userLogin}/${folderName}/${finalFileName}`,
-      hls: `https://${wowzaHost}:1935/vod/_definst_/mp4:${userLogin}/${folderName}/${finalFileName}/playlist.m3u8`,
+      hls: `https://${wowzaHost}/vod/_definst_/mp4:${userLogin}/${folderName}/${finalFileName}/playlist.m3u8`,
       proxy: `/content/${userLogin}/${folderName}/${finalFileName}`,
       external: `https://${wowzaHost}:6980/content/${userLogin}/${folderName}/${finalFileName}`
     };

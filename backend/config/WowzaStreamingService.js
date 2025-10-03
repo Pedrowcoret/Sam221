@@ -853,7 +853,7 @@ class WowzaStreamingService {
           success: true,
           message: 'Streaming iniciado com sucesso',
           urls: {
-            hls: `https://stmv1.udicast.com:1935/${userLogin}/smil:${smilFileName}/playlist.m3u8`,
+            hls: `https://stmv1.udicast.com/${userLogin}/smil:${smilFileName}/playlist.m3u8`,
             rtmp: `rtmp://stmv1.udicast.com:1935/${userLogin}/smil:${smilFileName}`,
             rtsp: `rtsp://stmv1.udicast.com:554/${userLogin}/smil:${smilFileName}`
           }

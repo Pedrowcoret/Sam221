@@ -490,9 +490,9 @@ router.post('/start', async (req, res) => {
 
         const playerUrls = {
             iframe: `${baseUrl}/api/player-port/iframe?login=${userLogin}&playlist=${playlist_id}&player=1&contador=true&compartilhamento=true`,
-            direct_hls: `https://${servidor}:1935/${userLogin}/smil:playlists_agendamentos.smil/playlist.m3u8`,
+            direct_hls: `https://${servidor}/${userLogin}/smil:playlists_agendamentos.smil/playlist.m3u8`,
             direct_rtmp: `rtmp://${servidor}:1935/${userLogin}/smil:playlists_agendamentos.smil`,
-            wowza_url: `https://${servidor}:1935/${userLogin}/${userLogin}/playlist.m3u8`
+            wowza_url: `https://${servidor}/${userLogin}/${userLogin}/playlist.m3u8`
         };
 
         console.log(`🎥 Player URLs geradas para ${userLogin}`);
@@ -932,8 +932,8 @@ router.get('/source-urls', async (req, res) => {
         }
 
         const urls = {
-            http_m3u8: `https://${wowzaHost}:1935/${userLogin}/${userLogin}/playlist.m3u8`,
-            https_m3u8: `https://${wowzaHost}:1935/${userLogin}/${userLogin}/playlist.m3u8`,
+            http_m3u8: `https://${wowzaHost}/${userLogin}/${userLogin}/playlist.m3u8`,
+            https_m3u8: `https://${wowzaHost}/${userLogin}/${userLogin}/playlist.m3u8`,
             rtmp: `rtmp://${wowzaHost}:${rtmpPort}/${userLogin}/${userLogin}`,
             rtmps: `rtmps://${wowzaHost}:443/${userLogin}/${userLogin}`,
             recommended: 'https_m3u8'
@@ -956,8 +956,8 @@ router.get('/source-urls', async (req, res) => {
         res.json({
             success: true,
             urls: {
-                http_m3u8: `https://${wowzaHost}:1935/${userLogin}/${userLogin}/playlist.m3u8`,
-                https_m3u8: `https://${wowzaHost}:1935/${userLogin}/${userLogin}/playlist.m3u8`,
+                http_m3u8: `https://${wowzaHost}/${userLogin}/${userLogin}/playlist.m3u8`,
+                https_m3u8: `https://${wowzaHost}/${userLogin}/${userLogin}/playlist.m3u8`,
                 rtmp: `rtmp://${wowzaHost}:1935/${userLogin}/${userLogin}`,
                 rtmps: `rtmps://${wowzaHost}:443/${userLogin}/${userLogin}`,
                 recommended: 'https_m3u8'
