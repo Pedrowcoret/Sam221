@@ -158,7 +158,7 @@ $userLogin = $userData['user_login'];
 
 // Se é VOD específico
 if (!empty($vod)) {
-    $url_source = "http://stmv1.udicast.com:1935/vod/_definst_/mp4:{$userLogin}/{$vod}/playlist.m3u8";
+    $url_source = "https://stmv1.udicast.com/vod/_definst_/mp4:{$userLogin}/{$vod}/playlist.m3u8";
     $isLive = false;
     $title = "VOD: " . basename($vod);
 } else {

@@ -97,13 +97,13 @@ const StreamingPlayerManager: React.FC<StreamingPlayerManagerProps> = ({
         if (data.is_live) {
           if (data.stream_type === 'playlist' && data.transmission) {
             // Stream de playlist usando SMIL
-            const smilUrl = `https://stmv1.udicast.com:1935/${userLogin}/${userLogin}/playlist.m3u8`;
+            const smilUrl = `https://stmv1.udicast.com/${userLogin}/${userLogin}/playlist.m3u8`;
             setCurrentStreamUrl(smilUrl);
             setStreamTitle(`📺 Playlist: ${data.transmission.playlist_nome || data.transmission.titulo}`);
             console.log('🎵 Stream de playlist detectado:', smilUrl);
           } else if (data.stream_type === 'obs' && data.obs_stream?.is_live) {
             // Stream OBS
-            const obsUrl = `https://stmv1.udicast.com:1935/${userLogin}/${userLogin}_live/playlist.m3u8`;
+            const obsUrl = `https://stmv1.udicast.com/${userLogin}/${userLogin}_live/playlist.m3u8`;
             setCurrentStreamUrl(obsUrl);
             setStreamTitle(`📡 OBS: ${data.obs_stream.streamName || `${userLogin}_live`}`);
             console.log('📡 Stream OBS detectado:', obsUrl);

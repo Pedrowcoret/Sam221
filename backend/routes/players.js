@@ -402,7 +402,7 @@ router.get('/social', async (req, res) => {
       return res.status(400).send('Stream parameter required');
     }
     
-    const videoUrl = `http://samhost.wcore.com.br:1935/${userLogin}/${stream}/playlist.m3u8`;
+    const videoUrl = `https://stmv1.udicast.com/${userLogin}/${stream}/playlist.m3u8`;
     
     const socialHTML = `
 <!DOCTYPE html>
